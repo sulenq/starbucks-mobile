@@ -59,14 +59,14 @@ export default function LandingPage() {
           motionPreset="slideInRight"
         >
           <ModalContent>
-            <Image
-              w={'240px'}
-              position={'absolute'}
-              top={0}
-              right={0}
-              src="./bgLogoOverlay.png"
-            />
-            <ModalHeader p={'16px'} mb={'24px'}>
+            <ModalHeader p={'16px'} mb={'24px'} className="modalProps">
+              <Image
+                w={'240px'}
+                position={'absolute'}
+                top={0}
+                right={0}
+                src="./bgLogoOverlay.png"
+              />
               <HStack justifyContent={'space-between'}>
                 <Icon
                   onClick={onClose}
@@ -76,7 +76,7 @@ export default function LandingPage() {
                 <Image src={'starbucks.png'} />
               </HStack>
             </ModalHeader>
-            <ModalBody py={0}>
+            <ModalBody py={0} className="modalProps">
               <Text
                 fontSize={'25px'}
                 fontWeight={800}
@@ -102,14 +102,14 @@ export default function LandingPage() {
                 type="password"
                 mb={4}
               />
-              <Text fontSize={'13px'} color={'primary'}>
+              <Text fontSize={'13px'} className="textPrimary">
                 Forgot Password?
               </Text>
             </ModalBody>
-            <ModalFooter>
+            <ModalFooter className="modalProps">
               <Button
                 onClick={() => {
-                  navigate('/home');
+                  navigate('/enterpin');
                 }}
                 className="btn primaryBtn"
                 w={'100%'}
@@ -127,7 +127,9 @@ export default function LandingPage() {
   };
 
   const SignUp = () => {
+    const navigate = useNavigate();
     const { isOpen, onOpen, onClose } = useDisclosure();
+
     const steps = [
       { title: 'First', description: 'Phone Number OTP' },
       { title: 'Second', description: 'Email & Password' },
@@ -245,7 +247,7 @@ export default function LandingPage() {
 
     return (
       <>
-        <Link onClick={onOpen} color={'primary.500'} fontWeight={'700'}>
+        <Link onClick={onOpen} className="textPrimary">
           Sign Up
         </Link>
 
@@ -256,15 +258,15 @@ export default function LandingPage() {
           motionPreset="slideInRight"
         >
           <ModalContent>
-            <Image
-              w={'240px'}
-              position={'absolute'}
-              top={0}
-              right={0}
-              src="./bgLogoOverlay.png"
-              zIndex={-1}
-            />
-            <ModalHeader p={'16px'} mb={'24px'}>
+            <ModalHeader p={'16px'} mb={'24px'} className="modalProps">
+              <Image
+                w={'240px'}
+                position={'absolute'}
+                top={0}
+                right={0}
+                src="./bgLogoOverlay.png"
+                zIndex={-1}
+              />
               <HStack justifyContent={'space-between'}>
                 <Icon
                   onClick={onClose}
@@ -274,7 +276,7 @@ export default function LandingPage() {
                 <Image src={'starbucks.png'} />
               </HStack>
             </ModalHeader>
-            <ModalBody py={0}>
+            <ModalBody py={0} className="modalProps">
               <Text
                 fontSize={'25px'}
                 fontWeight={800}
@@ -316,13 +318,13 @@ export default function LandingPage() {
                 <Text>Invalid Step</Text>
               )}
             </ModalBody>
-            <ModalFooter>
+            <ModalFooter className="modalProps">
               <Button
                 onClick={() => {
                   if (activeStep !== max) {
                     setActiveStep(activeStep + 1);
                   } else {
-                    onClose();
+                    navigate('/createpin');
                   }
                 }}
                 className="btn primaryBtn"
@@ -349,7 +351,7 @@ export default function LandingPage() {
         p={4}
         bg={'white'}
       >
-        <HStack mb={'20px'}>
+        <HStack mb={'20px'} gap={'16px'}>
           <Image w={'70px'} flexShrink={0} src={'./logo192.png'} />
           <Box>
             <Text fontSize={'20px'} fontWeight={800}>

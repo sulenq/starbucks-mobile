@@ -6,6 +6,9 @@ import { ChakraProvider, VStack, Text, Link } from '@chakra-ui/react';
 import { myTheme } from './Theme/myTheme';
 import './style.css';
 import LandingPage from './Pages/LandingPage';
+import EnterPin from './Pages/EnterPin';
+import CreatePin from './Pages/CreatePin';
+import Home from './Pages/Home';
 
 const NotFound = () => {
   return (
@@ -38,6 +41,9 @@ function App() {
       <ChakraProvider theme={myTheme}>
         <Routes>
           <Route path={'/'} element={<LandingPage />} />
+          <Route path={'/enterpin'} element={<EnterPin />} />
+          <Route path={'/createpin'} element={<CreatePin />} />
+          <Route path={'/home'} element={<Home />} />
           <Route path={'*'} element={<NotFound />} />
         </Routes>
       </ChakraProvider>

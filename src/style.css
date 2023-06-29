@@ -2,6 +2,7 @@
   box-sizing: border-box !important;
   font-family: 'Open Sans', sans-serif;
   font-weight: 500;
+  line-height: normal !important;
 }
 
 ::-webkit-scrollbar {
@@ -21,20 +22,21 @@ a {
 }
 
 #appContainer {
-  min-height: 100vh !important;
+  height: 100vh !important;
   margin: 0 auto;
   max-width: 480px !important;
   align-items: flex-start;
-  justify-content: space-between;
   position: relative !important;
   padding-bottom: 56px;
   gap: 0 !important;
+  /* justify-content: space-between; */
 }
 
 .btn {
   padding: 6px 16px !important;
   border-radius: 8px !important;
   font-size: 13px !important;
+  font-weight: 600 !important;
 }
 .primaryBtn {
   background: var(--primary) !important;
@@ -54,4 +56,33 @@ a {
 .input:focus-visible {
   box-shadow: 0 0 0 1px var(--primary) !important;
   border: 1px solid var(--primary) !important;
+}
+
+.modalProps {
+  max-width: 480px !important;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.textPrimary {
+  color: var(--primary) !important;
+  font-weight: 700 !important;
+}
+
+.pinField {
+  height: 60px !important;
+  width: 60px !important;
+  font-size: 32px !important;
+  padding: 0 !important;
+  padding-bottom: 6px !important;
+}
+.pinField:focus-visible {
+  box-shadow: 0 0 0 1px var(--primary) !important;
+  border: 1px solid var(--primary) !important;
+}
+
+.bs {
+  box-shadow: 0 0 5px var(--gray);
+  border-radius: 8px;
 }
