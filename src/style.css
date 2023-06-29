@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box !important;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+:root {
+  --primary-hover: #358167;
+  --primary: #036141;
+  --primary-active: #03583b;
+  --primary-a: #0361424d;
+  --gray: #9ca2a74c;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+#appContainer {
+  min-height: 100vh !important;
+  margin: 0 auto;
+  max-width: 480px !important;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative !important;
+  padding-bottom: 56px;
+  gap: 0 !important;
+}
+
+.btn {
+  padding: 6px 16px !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+}
+.primaryBtn {
+  background: var(--primary) !important;
+  color: white !important;
+}
+.primaryBtn:hover {
+  background: var(--primary) !important;
+}
+.primaryBtn:active {
+  background: var(--primary) !important;
+}
+
+.input {
+  height: 40px;
+  background: white !important;
+}
+.input:focus-visible {
+  box-shadow: 0 0 0 1px var(--primary) !important;
+  border: 1px solid var(--primary) !important;
+}
