@@ -13,6 +13,7 @@ import {
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import { Nav } from '../myComponents';
 
 export default function Home() {
   const homeFeatured = ['1.png', '2.png', '3.png', '4.png', '5.png'];
@@ -40,6 +41,7 @@ export default function Home() {
 
   return (
     <VStack id={'appContainer'}>
+      <Nav />
       <HStack w={'100%'} flexShrink={0} p={4} justifyContent={'space-between'}>
         <Box>
           <Text fontSize={'20px'} fontWeight={800}>
@@ -55,35 +57,42 @@ export default function Home() {
           <Icon fontSize={'26px'} as={MailOutlinedIcon} />
         </Button>
       </HStack>
-      <Box overflow={'auto'} w={'100%'} h={'100%'} px={4} pt={'13px'}>
-        <HStack
-          bgImage={'./cardBalance.png'}
-          bgSize={'cover'}
-          w={'100%'}
-          p={4}
-          borderRadius={'8px'}
-          justifyContent={'space-between'}
-          mb={4}
-        >
-          <Box>
-            <Text fontSize={'10px'} color={'primary.50 !important'}>
-              Card Balance
-            </Text>
-            <Text color={'white !important'} fontSize={'25px'} fontWeight={800}>
-              Rp 200.000
-            </Text>
-          </Box>
-          <Button
-            className="btn"
-            pl={'8px !important'}
-            leftIcon={<AddRoundedIcon />}
-            color={'primary.500'}
-          >
-            Top Up
-          </Button>
-        </HStack>
 
-        <Box w={'100%'} overflow={'auto'} mb={4}>
+      <Box overflow={'auto'} w={'100%'} h={'100%'} pt={'13px'}>
+        <Box px={4}>
+          <HStack
+            bgImage={'./cardBalance.png'}
+            bgSize={'cover'}
+            w={'100%'}
+            p={4}
+            borderRadius={'8px'}
+            justifyContent={'space-between'}
+            mb={4}
+          >
+            <Box>
+              <Text fontSize={'10px'} color={'primary.50 !important'}>
+                Card Balance
+              </Text>
+              <Text
+                color={'white !important'}
+                fontSize={'25px'}
+                fontWeight={800}
+              >
+                Rp 200.000
+              </Text>
+            </Box>
+            <Button
+              className="btn"
+              pl={'8px !important'}
+              leftIcon={<AddRoundedIcon />}
+              color={'primary.500'}
+            >
+              Top Up
+            </Button>
+          </HStack>
+        </Box>
+
+        <Box px={4} w={'100%'} overflow={'auto'} mb={6}>
           <HStack w={'max-content'}>
             {homeFeatured?.map((f, index) => {
               return (
@@ -95,11 +104,12 @@ export default function Home() {
           </HStack>
         </Box>
 
-        <HStack mb={4}>
+        <HStack px={4} mb={4}>
           <Button w={'50%'} className="btn primaryBtn">
             <Image
               src="./coffeCup.png"
               position={'absolute'}
+              w={'40px'}
               top={'-20px'}
               left={'20px'}
             />
@@ -111,6 +121,7 @@ export default function Home() {
             <Image
               src="./location.png"
               position={'absolute'}
+              w={'34px'}
               top={'-20px'}
               left={'20px'}
             />
@@ -120,11 +131,11 @@ export default function Home() {
           </Button>
         </HStack>
 
-        <Text fontWeight={800} mb={4}>
+        <Text px={4} fontWeight={800} mb={4}>
           Promo
         </Text>
 
-        <Box>
+        <Box px={4}>
           {homePromo?.map((p, index) => {
             return (
               <HStack key={index} mb={4} p={4} className="bs" gap={5}>
@@ -134,14 +145,12 @@ export default function Home() {
                   flexShrink={0}
                 />
                 <Box>
-                  <Text fontWeight={700} mb={'4px'}>
+                  <Text fontWeight={700} mb={1}>
                     {p?.title}
                   </Text>
-                  <Box>
-                    <Text fontSize={'13px'} fontWeight={400} noOfLines={2}>
-                      {p?.desc}
-                    </Text>
-                  </Box>
+                  <Text mb={1} fontSize={'13px'} fontWeight={400} noOfLines={2}>
+                    {p?.desc}
+                  </Text>
                   <Text fontSize={'10px'} color={'primary.300'}>
                     {p?.exp}
                   </Text>

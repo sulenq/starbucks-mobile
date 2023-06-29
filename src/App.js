@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import { ChakraProvider, VStack, Text, Link } from '@chakra-ui/react';
+import { ChakraProvider, VStack, Text, Link, Button } from '@chakra-ui/react';
 
 import { myTheme } from './Theme/myTheme';
 import './style.css';
@@ -9,27 +9,33 @@ import LandingPage from './Pages/LandingPage';
 import EnterPin from './Pages/EnterPin';
 import CreatePin from './Pages/CreatePin';
 import Home from './Pages/Home';
+import Card from './Pages/Card';
+import Reward from './Pages/Reward';
+import Profile from './Pages/Profile';
 
 const NotFound = () => {
   return (
     <VStack
       w={'100%'}
       h={'100vh'}
-      fontWeight={'bold'}
       gap={null}
       justifyContent={'center'}
       textAlign={'center'}
       zIndex={99}
     >
-      <Text fontSize={'64px'}>404</Text>
-      <Text fontSize={'64px'}>PAGE NOT FOUND</Text>
+      <Text fontWeight={'800 !important'} fontSize={'64px'}>
+        404
+      </Text>
+      <Text fontWeight={'800 !important'} fontSize={'64px'} mb={5}>
+        PAGE NOT FOUND
+      </Text>
       <Link
         href={'/'}
         fontSize={'24px'}
         color={'primary'}
         textDecoration={'underline'}
       >
-        Back to Landing Page
+        <Button colorScheme="primary">Back to Landing Page</Button>
       </Link>
     </VStack>
   );
@@ -44,6 +50,9 @@ function App() {
           <Route path={'/enterpin'} element={<EnterPin />} />
           <Route path={'/createpin'} element={<CreatePin />} />
           <Route path={'/home'} element={<Home />} />
+          <Route path={'/card'} element={<Card />} />
+          <Route path={'/reward'} element={<Reward />} />
+          <Route path={'/profile'} element={<Profile />} />
           <Route path={'*'} element={<NotFound />} />
         </Routes>
       </ChakraProvider>
