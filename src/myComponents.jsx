@@ -62,12 +62,13 @@ const Nav = () => {
             </ModalHeader>
             <ModalBody className="modalProps" p={0}>
               <VStack gap={null}>
-                <Box w={'100%'} overflow={'auto'} mb={2}>
+                <Box w={'100%'} overflow={'auto'} mb={4}>
                   <HStack w={'max-content'} gap={5} px={4}>
                     <Image w={cardSize} src="./card.png" />
                     <Image w={cardSize} src="./addCard.png" />
                   </HStack>
                 </Box>
+
                 <HStack
                   px={4}
                   w={'100%'}
@@ -112,7 +113,7 @@ const Nav = () => {
                     <HStack justifyContent={'space-between'} w={'100%'}>
                       <Box justifySelf={'flex-start !important'}>
                         <Text fontSize={'13px'} fontWeight={700}>
-                          Use yout rewards
+                          Use your rewards
                         </Text>
                         <Text fontSize={'10px'}>2 reward can be used</Text>
                       </Box>
