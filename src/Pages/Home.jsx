@@ -727,6 +727,86 @@ export default function Home() {
     );
   };
 
+  const PromoDetails = props => {
+    const f = props?.f;
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const sk = [
+      'Promo berlaku SETIAP HARI berupa potongan harga Rp5000,- untuk pembelian minuman jika menggunakan tumbler official Starbucks.',
+      'Minuman yang tidak bisa mengikuti promo: Special price, Manual Brew, Reserve, Ice Cream Series.',
+      'Promo berlaku untuk transaksi Dine In, Take Away dan Drive-Thru di gerai Starbucks.',
+      'Berlaku di seluruh gerai Starbucks Indonesia, kecuali gerai airport dan Starbucks Reserve Dewata.',
+      'Berlaku untuk semua jenis metode pembayaran.',
+      'Promo tidak berlaku untuk penukaran Rewards Starbucks Rewards.',
+      ' Promo tidak dapat digabungkan dengan promo lainnya.',
+    ];
+
+    return (
+      <>
+        <Box onClick={onOpen} maxW={'365px'} w={hfSize}>
+          <Image src={'./homeFeatured/' + f} />
+        </Box>
+
+        <Modal
+          isOpen={true}
+          size={'full'}
+          onClose={onClose}
+          motionPreset="slideInRight"
+        >
+          <ModalContent>
+            <ModalHeader className="modalProps bs">
+              <HStack>
+                <Icon
+                  onClick={onClose}
+                  w={'20px'}
+                  mt={'2px'}
+                  mr={2}
+                  as={ArrowBackIosNewRoundedIcon}
+                />
+                <Text fontSize={'20px'} fontWeight={800}>
+                  Promo
+                </Text>
+              </HStack>
+            </ModalHeader>
+            <ModalBody className="modalProps" p={0} overflow={'auto'}>
+              <Box p={4}>
+                <Image src={'./homeFeatured/' + f} />
+              </Box>
+
+              <Box px={4}>
+                <Text fontWeight={800}>TUMBLER DAY</Text>
+                <Text fontSize={'10px'} mb={4}>
+                  Expire on 30 January 2024
+                </Text>
+
+                <Text fontSize={'13px'} mb={4}>
+                  Tumbler Day jadi cukup spesial karena selain memberikan
+                  potongan 30-50% setiap hari Kamis dan tanggal 22 setiap bulan
+                  untuk minuman favorit kepada pelanggan jika membawa tumbler
+                  official Starbucks, program ini juga merupakan salah satu
+                  langkah Starbucks untuk mengurangi penggunaan plastik sekali
+                  pakai di gerai.
+                </Text>
+
+                <Text fontSize={'13px'} fontWeight={700} mb={2}>
+                  Syarat dan ketentuan TUMBLER DAY:
+                </Text>
+                {sk?.map((s, index) => {
+                  return (
+                    <HStack fontSize={'13px'} alignItems={'flex-start'} mb={1}>
+                      <Text>{index + 1 + '.'}</Text>
+                      <Text>{s}</Text>
+                    </HStack>
+                  );
+                })}
+              </Box>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  };
+
   return (
     <VStack id={'appContainer'}>
       <Nav />
@@ -783,11 +863,7 @@ export default function Home() {
         <Box px={4} w={'100%'} overflow={'auto'} mb={6}>
           <HStack w={'max-content'}>
             {homeFeatured?.map((f, index) => {
-              return (
-                <Box key={index} maxW={'365px'} w={hfSize}>
-                  <Image src={'./homeFeatured/' + f} />
-                </Box>
-              );
+              return <PromoDetails key={index} f={f} />;
             })}
           </HStack>
         </Box>
