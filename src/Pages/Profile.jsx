@@ -1,25 +1,6 @@
 import React from 'react';
 
-import {
-  VStack,
-  HStack,
-  Text,
-  Box,
-  Image,
-  Progress,
-  Button,
-  Input,
-  Modal,
-  ModalContent,
-  ModalBody,
-  Icon,
-  ModalOverlay,
-  useDisclosure,
-  ModalHeader,
-} from '@chakra-ui/react';
-
-import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
-import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
+import { VStack, HStack, Text, Box, Image, Button } from '@chakra-ui/react';
 
 import { Nav } from '../myComponents';
 import { useNavigate } from 'react-router-dom';
