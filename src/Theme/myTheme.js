@@ -15,6 +15,9 @@ export const myTheme = extendTheme({
       800: '#023524',
       900: '#01291b',
     },
+    voundation: {
+      500: '#D9C897',
+    },
   },
   styles: {
     global: props => ({

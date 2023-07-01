@@ -748,7 +748,7 @@ export default function Home() {
         </Box>
 
         <Modal
-          isOpen={true}
+          isOpen={isOpen}
           size={'full'}
           onClose={onClose}
           motionPreset="slideInRight"

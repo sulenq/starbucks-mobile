@@ -184,13 +184,13 @@ const Nav = () => {
       <Scan />
 
       <VStack className="navItem">
-        <Link href={'/reward'}>
+        <Link href={'/starbucks-rewards'}>
           <Image
-            opacity={activeNav !== '/reward' && 0.5}
+            opacity={activeNav !== '/starbucks-rewards' && 0.5}
             mx={'auto'}
             w={'28px'}
             src={
-              activeNav === '/reward'
+              activeNav === '/starbucks-rewards'
                 ? './nav/iconVisited/reward.png'
                 : './nav/icon/reward.png'
             }
@@ -198,7 +198,9 @@ const Nav = () => {
           />
           <Text
             className={
-              activeNav === '/reward' ? 'navName visitedNav' : 'navName'
+              activeNav === '/starbucks-rewards'
+                ? 'navName visitedNav'
+                : 'navName'
             }
           >
             Reward

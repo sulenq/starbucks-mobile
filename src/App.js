@@ -51,7 +51,11 @@ function App() {
           <Route path={'/createpin'} element={<CreatePin />} />
           <Route path={'/home'} element={<Home />} />
           <Route path={'/card'} element={<Card />} />
-          <Route path={'/reward'} element={<Reward />} />
+          <Route
+            path={'/starbucks-rewards'}
+            strict={false}
+            element={<Reward />}
+          />
           <Route path={'/profile'} element={<Profile />} />
           <Route path={'*'} element={<NotFound />} />
         </Routes>
