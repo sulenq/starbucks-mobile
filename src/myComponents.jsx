@@ -57,7 +57,7 @@ const Nav = () => {
                   w={'20px'}
                   as={ArrowBackIosNewRoundedIcon}
                 />
-                <Image src={'starbucks.png'} />
+                <Image h={4} src={'starbucks.png'} />
               </HStack>
             </ModalHeader>
             <ModalBody className="modalProps" p={0}>

@@ -8,11 +8,23 @@ import {
   Text,
   VStack,
   Image,
+  useDisclosure,
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  InputGroup,
+  InputLeftElement,
+  Input,
 } from '@chakra-ui/react';
 
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+
 import { Nav } from '../myComponents';
 
 export default function Home() {
@@ -38,6 +50,139 @@ export default function Home() {
       exp: 'Expire on 31 January 2024',
     },
   ];
+
+  const Location = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const locations = [
+      {
+        name: 'Starbucks Setiabudi Semarang',
+        open: '08.00 - 21.00 WIB',
+        address:
+          'Jl. Setia Budi, Ngesrep, Kec. Banyumanik, Kota Semarang, Jawa Tengah 50262',
+      },
+      {
+        name: 'Starbucks Museum Mandala Semarang',
+        open: '08.00 - 21.00 WIB',
+        address:
+          'Barusari, Semarang Selatan, Semarang City, Central Java 50245',
+      },
+      {
+        name: 'Starbucks Setiabudi Semarang',
+        open: '08.00 - 21.00 WIB',
+        address:
+          'Jl. Pemuda No.150, Sekayu, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50132',
+      },
+      {
+        name: 'Starbucks Setiabudi Semarang',
+        open: '08.00 - 21.00 WIB',
+        address:
+          'Jl. Gajahmada No.111, Miroto, Kec. Semarang Tengah, Kota Semarang, Jawa Tengah 50134',
+      },
+    ];
+
+    return (
+      <>
+        <Button onClick={onOpen} w={'50%'} className="btn primaryBtn">
+          <Image
+            src="./location.png"
+            position={'absolute'}
+            w={'34px'}
+            top={'-20px'}
+            left={'20px'}
+          />
+          <Text fontWeight={600} pl={'40px'}>
+            Location
+          </Text>
+        </Button>
+
+        <Modal
+          isOpen={true}
+          onClose={onClose}
+          size={'full'}
+          motionPreset="slideInRight"
+        >
+          <ModalContent as={VStack} gap={'0 !important'} h={'100vh'}>
+            <ModalHeader flexShrink={0} className="modalProps bs" px={4}>
+              <HStack>
+                <Icon
+                  onClick={onClose}
+                  w={'20px'}
+                  mt={'2px'}
+                  mr={2}
+                  as={ArrowBackIosNewRoundedIcon}
+                />
+                <Text fontSize={'20px'} fontWeight={800}>
+                  Location
+                </Text>
+              </HStack>
+            </ModalHeader>
+            <ModalBody
+              as={VStack}
+              gap={null}
+              h={'100%'}
+              overflow={'auto'}
+              className="modalProps"
+              p={0}
+            >
+              <HStack p={4} pb={0}>
+                <InputGroup>
+                  <InputLeftElement pointerEvents="none">
+                    <Icon as={SearchOutlinedIcon} />
+                  </InputLeftElement>
+                  <Input
+                    className="input"
+                    placeholder="Search store:Tugu muda store"
+                    _placeholder={{ fontWeight: 400, fontsize: '13px' }}
+                  />
+                </InputGroup>
+                <Button
+                  variant={'ghost'}
+                  color={'primary.500'}
+                  leftIcon={<MapOutlinedIcon />}
+                >
+                  Maps
+                </Button>
+              </HStack>
+
+              <VStack p={4} gap={4}>
+                {locations?.map((l, index) => {
+                  return (
+                    <Box key={index} className="bs" w={'100%'}>
+                      <Image src="./locationImg.png" />
+                      <Box p={'8px 16px'}>
+                        <Text fontWeight={700} mb={1}>
+                          {l?.name}
+                        </Text>
+                        <HStack fontSize={'13px'} mb={3}>
+                          <Text color={'primary.500'}>Open</Text>
+                          <Text fontWeight={400}>{l?.open}</Text>
+                        </HStack>
+                        <Text fontSize={'13px'} fontWeight={400}>
+                          {l?.address}
+                        </Text>
+                      </Box>
+                      <Box p={'8px 16px'}>
+                        <Button
+                          className="btn"
+                          variant={'ghost'}
+                          colorScheme="primary"
+                          w={'100%'}
+                          color={'primary.500'}
+                        >
+                          Choose location
+                        </Button>
+                      </Box>
+                    </Box>
+                  );
+                })}
+              </VStack>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  };
 
   return (
     <VStack id={'appContainer'}>
@@ -117,18 +262,8 @@ export default function Home() {
               Order
             </Text>
           </Button>
-          <Button w={'50%'} className="btn primaryBtn">
-            <Image
-              src="./location.png"
-              position={'absolute'}
-              w={'34px'}
-              top={'-20px'}
-              left={'20px'}
-            />
-            <Text fontWeight={600} pl={'40px'}>
-              Location
-            </Text>
-          </Button>
+
+          <Location />
         </HStack>
 
         <Text px={4} fontWeight={800} mb={4}>

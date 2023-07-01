@@ -53,7 +53,7 @@ export default function EnterPin() {
       <Box p={'16px'}>
         <HStack justifyContent={'space-between'} mb={'32px'}>
           <Icon w={'20px'} as={ArrowBackIosNewRoundedIcon} />
-          <Image src={'starbucks.png'} />
+          <Image h={4} src={'starbucks.png'} />
         </HStack>
         <Text fontSize={'25px'} fontWeight={800} color={'primary'}>
           Enter Your PIN
