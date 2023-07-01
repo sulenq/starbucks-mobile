@@ -142,6 +142,7 @@ const Nav = () => {
       <VStack className="navItem">
         <Link href={'/home'}>
           <Image
+            opacity={activeNav !== '/home' && 0.5}
             mx={'auto'}
             w={'28px'}
             src={
@@ -162,6 +163,7 @@ const Nav = () => {
       <VStack className="navItem">
         <Link href={'/card'}>
           <Image
+            opacity={activeNav !== '/card' && 0.5}
             mx={'auto'}
             w={'28px'}
             src={
@@ -184,6 +186,7 @@ const Nav = () => {
       <VStack className="navItem">
         <Link href={'/reward'}>
           <Image
+            opacity={activeNav !== '/reward' && 0.5}
             mx={'auto'}
             w={'28px'}
             src={
@@ -206,6 +209,7 @@ const Nav = () => {
       <VStack className="navItem">
         <Link href={'/profile'}>
           <Image
+            opacity={activeNav !== '/profile' && 0.5}
             mx={'auto'}
             w={'28px'}
             src={

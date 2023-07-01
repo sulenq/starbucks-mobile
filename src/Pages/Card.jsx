@@ -249,6 +249,11 @@ export default function Card() {
   return (
     <VStack id="appContainer">
       <Nav />
+      <HStack className="bs" w={'100%'} borderRadius={0}>
+        <Text fontSize={'20px'} p={4} fontWeight={800}>
+          Starbucks Card
+        </Text>
+      </HStack>
 
       <VStack overflow={'auto'} h={'100%'} w={'100%'} pb={4}>
         <Box w={'100%'} flexShrink={0} overflow={'auto'} pt={4}>

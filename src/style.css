@@ -71,7 +71,7 @@ a {
   max-width: 480px !important;
   width: 100%;
   margin: 0 auto;
-  position: relative;
+  /* position: relative; */
 }
 
 .textPrimary {
@@ -131,7 +131,7 @@ a {
   transition: 0.1s;
 }
 .unselectedSize {
-  background: #F2F0EA;
+  background: #f2f0ea;
   color: black;
 }
 .selectedSize {

@@ -483,12 +483,7 @@ export default function Home() {
           size={'full'}
           motionPreset="slideInRight"
         >
-          <ModalContent
-            gap={'0 !important'}
-            position={'absolute'}
-            h={'100vh'}
-            bg={'var(--a)'}
-          >
+          <ModalContent h={'100vh'} bg={'var(--a)'}>
             <ModalHeader flexShrink={0} className="modalProps" px={4}>
               <HStack justifyContent={'space-between'} color={'white'}>
                 <Icon
@@ -507,6 +502,7 @@ export default function Home() {
                 />
               </HStack>
             </ModalHeader>
+
             <ModalBody
               as={VStack}
               gap={null}
@@ -518,19 +514,23 @@ export default function Home() {
               <Image
                 w={'280px'}
                 position={'absolute'}
-                top={4}
+                top={'64px'}
                 right={0}
                 src="./bgLogoOverlay2.png"
                 zIndex={-1}
               />
-              <VStack h={'50%'} w={'100%'} color={'white'}>
+              <VStack
+                h={'60%'}
+                w={'100%'}
+                color={'white'}
+                justifyContent={'center'}
+              >
                 <Image
-                  mt={4}
-                  maxH={'240px'}
-                  flexShrink={1}
+                  maxH={'200px'}
+                  flex={'1 1 auto'}
                   src={'./orderBlendedCoffees/' + f?.src}
                 />
-                <Text fontSize={'20px'} fontWeight={800} mt={4}>
+                <Text fontSize={'20px'} fontWeight={800} mt={2}>
                   {f?.name}
                 </Text>
                 <Text fontSize={'13px'} fontWeight={700}>
@@ -547,10 +547,12 @@ export default function Home() {
                   interdum.
                 </Text>
               </VStack>
-              <Box
-                h={'50%'}
+
+              <VStack
+                h={'40%'}
                 w={'100%'}
                 bg={'white'}
+                alignItems={'flex-start'}
                 borderRadius={'16px 16px 0 0'}
                 overflow={'auto'}
               >
@@ -558,7 +560,7 @@ export default function Home() {
                   Size
                 </Text>
 
-                <Box w={'1005'} overflow={'auto'} pt={2}>
+                <Box w={'100%'} flexShrink={0} overflow={'auto'} pt={2}>
                   <HStack w={'max-content'} px={4} gap={4}>
                     <Box
                       onClick={() => {
@@ -699,10 +701,13 @@ export default function Home() {
                     </HStack>
                   </HStack>
                 </Box>
-              </Box>
+              </VStack>
             </ModalBody>
+
             <ModalFooter
               className={'modalProps bs'}
+              p={4}
+              zIndex={99}
               borderRadius={0}
               bg={'white'}
             >
