@@ -56,7 +56,7 @@ function App() {
             strict={false}
             element={<Reward />}
           />
-          <Route path={'/profile'} element={<Profile />} />
+          <Route path={'/profile-settings'} element={<Profile />} />
           <Route path={'*'} element={<NotFound />} />
         </Routes>
       </ChakraProvider>

@@ -209,13 +209,13 @@ const Nav = () => {
       </VStack>
 
       <VStack className="navItem">
-        <Link href={'/profile'}>
+        <Link href={'/profile-settings'}>
           <Image
-            opacity={activeNav !== '/profile' && 0.5}
+            opacity={activeNav !== '/profile-settings' && 0.5}
             mx={'auto'}
             w={'28px'}
             src={
-              activeNav === '/profile'
+              activeNav === '/profile-settings'
                 ? './nav/iconVisited/profile.png'
                 : './nav/icon/profile.png'
             }
@@ -223,7 +223,9 @@ const Nav = () => {
           />
           <Text
             className={
-              activeNav === '/profile' ? 'navName visitedNav' : 'navName'
+              activeNav === '/profile-settings'
+                ? 'navName visitedNav'
+                : 'navName'
             }
           >
             Profile
