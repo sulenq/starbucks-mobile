@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   Box,
@@ -16,6 +16,9 @@ import {
   InputGroup,
   InputLeftElement,
   Input,
+  IconButton,
+  SimpleGrid,
+  ModalFooter,
 } from '@chakra-ui/react';
 
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
@@ -24,6 +27,9 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import MapOutlinedIcon from '@mui/icons-material/MapOutlined';
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
 
 import { Nav } from '../myComponents';
 
@@ -97,12 +103,12 @@ export default function Home() {
         </Button>
 
         <Modal
-          isOpen={true}
+          isOpen={isOpen}
           onClose={onClose}
           size={'full'}
           motionPreset="slideInRight"
         >
-          <ModalContent as={VStack} gap={'0 !important'} h={'100vh'}>
+          <ModalContent gap={'0 !important'} h={'100vh'}>
             <ModalHeader flexShrink={0} className="modalProps bs" px={4}>
               <HStack>
                 <Icon
@@ -184,6 +190,538 @@ export default function Home() {
     );
   };
 
+  const Order = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const favorite = [
+      {
+        name: 'Green tea',
+        price: 'Rp 38.000',
+        src: '1.png',
+      },
+      {
+        name: 'Mocha Frappucino',
+        price: 'Rp 60.000',
+        src: '2.png',
+      },
+      {
+        name: 'Caffe Late',
+        price: 'Rp 38.000',
+        src: '3.png',
+      },
+    ];
+    const blended = [
+      {
+        name: 'Green tea',
+        price: 'Rp 38.000',
+        src: '1.png',
+      },
+      {
+        name: 'Mocha Frappucino',
+        price: 'Rp 60.000',
+        src: '2.png',
+      },
+      {
+        name: 'Strawberry Frapucino',
+        price: 'Rp 38.000',
+        src: '3.png',
+      },
+      {
+        name: 'Strawberry Latte',
+        price: 'Rp 38.000',
+        src: '4.png',
+      },
+    ];
+    const espresso = [
+      {
+        name: 'Caffe Mocha',
+        price: 'Rp 38.000',
+        src: '1.png',
+      },
+      {
+        name: 'Americano',
+        price: 'Rp 38.000',
+        src: '2.png',
+      },
+    ];
+
+    return (
+      <>
+        <Button onClick={onOpen} w={'50%'} className="btn primaryBtn">
+          <Image
+            src="./coffeCup.png"
+            position={'absolute'}
+            w={'40px'}
+            top={'-20px'}
+            left={'20px'}
+          />
+          <Text fontWeight={600} pl={'40px'}>
+            Order
+          </Text>
+        </Button>
+
+        <Modal
+          isOpen={isOpen}
+          onClose={onClose}
+          size={'full'}
+          motionPreset="slideInRight"
+        >
+          <ModalContent gap={'0 !important'} h={'100vh'}>
+            <ModalHeader flexShrink={0} className="modalProps bs" px={4}>
+              <HStack justifyContent={'space-between'}>
+                <HStack>
+                  <Icon
+                    onClick={onClose}
+                    w={'20px'}
+                    mt={'2px'}
+                    mr={2}
+                    as={ArrowBackIosNewRoundedIcon}
+                  />
+                  <Text fontSize={'20px'} fontWeight={800}>
+                    Order
+                  </Text>
+                </HStack>
+                <Icon as={SearchOutlinedIcon} />
+              </HStack>
+            </ModalHeader>
+            <ModalBody
+              as={VStack}
+              alignItems={'flex-start'}
+              gap={'0 !important'}
+              w={'100%'}
+              h={'100%'}
+              overflow={'auto'}
+              className="modalProps"
+              p={0}
+            >
+              <Box p={4} w={'100%'}>
+                <HStack
+                  className="bo"
+                  p={'8px 16px'}
+                  w={'100%'}
+                  justifyContent={'space-between'}
+                >
+                  <HStack>
+                    <Image w={'16px'} src="locationAlt.png" />
+                    <Text fontSize={'13px'}>Starbucks Setiabudi Semarang</Text>
+                  </HStack>
+                  <Icon as={KeyboardArrowDownOutlinedIcon} />
+                </HStack>
+              </Box>
+
+              <HStack px={4} w={'100%'} mb={4}>
+                <HStack
+                  w={'50%'}
+                  h={'40px'}
+                  justifyContent={'center'}
+                  p={'8px 18px'}
+                  borderRadius={'8px'}
+                  bg={'primary.500'}
+                >
+                  <Image w={'24px'} src="coffeCup.png" mt={'-4px'} />
+                  <Text color={'white'} fontSize={'13px'} fontWeight={600}>
+                    Beverages
+                  </Text>
+                </HStack>
+                <HStack
+                  w={'50%'}
+                  h={'40px'}
+                  justifyContent={'center'}
+                  p={'8px 18px'}
+                  borderRadius={'8px'}
+                  border={'1px solid var(--primary)'}
+                >
+                  <Image w={'24px'} src="foods.png" />
+                  <Text
+                    fontSize={'13px'}
+                    color={'primary.500 !important'}
+                    fontWeight={600}
+                  >
+                    Foods
+                  </Text>
+                </HStack>
+              </HStack>
+
+              <Text px={4} fontWeight={700}>
+                Favorite
+              </Text>
+
+              <Box
+                w={'100%'}
+                overflow={'auto'}
+                p={'0 !important'}
+                flexShrink={0}
+              >
+                <HStack p={4} w={'max-content'} gap={4}>
+                  {favorite?.map((f, index) => {
+                    return (
+                      <VStack
+                        key={index}
+                        className="bs"
+                        flexShrink={0}
+                        p={3}
+                        w={'140px'}
+                      >
+                        <Image h={'120px'} src={'./orderFavorite/' + f?.src} />
+                        <HStack w={'100%'} justifyContent={'space-between'}>
+                          <Box>
+                            <Text
+                              fontSize={'13px'}
+                              fontWeight={700}
+                              noOfLines={1}
+                            >
+                              {f?.name}
+                            </Text>
+                            <Text fontSize={'13px'} fontWeight={400}>
+                              {f?.price}
+                            </Text>
+                          </Box>
+                          <IconButton
+                            borderRadius={'100%'}
+                            size={'xs'}
+                            colorScheme="primary"
+                            icon={<AddRoundedIcon />}
+                          />
+                        </HStack>
+                      </VStack>
+                    );
+                  })}
+                </HStack>
+              </Box>
+
+              <Text px={4} fontWeight={700}>
+                Blended Coffees
+              </Text>
+
+              <Box w={'100%'} flexShrink={0} mb={4}>
+                <SimpleGrid columns={[2]} p={4} gap={4}>
+                  {blended?.map((f, index) => {
+                    return <ProductDetails key={index} f={f} index={index} />;
+                  })}
+                </SimpleGrid>
+              </Box>
+
+              <Text px={4} fontWeight={700}>
+                Espresso Beverages
+              </Text>
+
+              <Box w={'100%'} flexShrink={0}>
+                <SimpleGrid columns={[2]} p={4} gap={4}>
+                  {espresso?.map((f, index) => {
+                    return (
+                      <VStack key={index} className="bs" flexShrink={0} p={3}>
+                        <Image h={'120px'} src={'./orderEspresso/' + f?.src} />
+                        <HStack w={'100%'} justifyContent={'space-between'}>
+                          <Box>
+                            <Text
+                              fontSize={'13px'}
+                              fontWeight={700}
+                              noOfLines={1}
+                            >
+                              {f?.name}
+                            </Text>
+                            <Text fontSize={'13px'} fontWeight={400}>
+                              {f?.price}
+                            </Text>
+                          </Box>
+                          <IconButton
+                            borderRadius={'100%'}
+                            size={'xs'}
+                            colorScheme="primary"
+                            icon={<AddRoundedIcon />}
+                          />
+                        </HStack>
+                      </VStack>
+                    );
+                  })}
+                </SimpleGrid>
+              </Box>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  };
+
+  const ProductDetails = props => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const f = props?.f;
+    const [selectedSize, setSelectedSize] = useState('Tall');
+
+    return (
+      <>
+        <VStack
+          key={props?.index}
+          onClick={onOpen}
+          className="bs"
+          flexShrink={0}
+          p={3}
+        >
+          <Image h={'120px'} src={'./orderBlendedCoffees/' + f?.src} />
+          <HStack w={'100%'} justifyContent={'space-between'}>
+            <Box>
+              <Text fontSize={'13px'} fontWeight={700} noOfLines={1}>
+                {f?.name}
+              </Text>
+              <Text fontSize={'13px'} fontWeight={400}>
+                {f?.price}
+              </Text>
+            </Box>
+            <IconButton
+              borderRadius={'100%'}
+              size={'xs'}
+              colorScheme="primary"
+              icon={<AddRoundedIcon />}
+            />
+          </HStack>
+        </VStack>
+
+        <Modal
+          isOpen={isOpen}
+          onClose={onClose}
+          size={'full'}
+          motionPreset="slideInRight"
+        >
+          <ModalContent
+            gap={'0 !important'}
+            position={'absolute'}
+            h={'100vh'}
+            bg={'var(--a)'}
+          >
+            <ModalHeader flexShrink={0} className="modalProps" px={4}>
+              <HStack justifyContent={'space-between'} color={'white'}>
+                <Icon
+                  onClick={onClose}
+                  w={'20px'}
+                  mt={'2px'}
+                  mr={2}
+                  as={ArrowBackIosNewRoundedIcon}
+                />
+                <Icon
+                  onClick={onClose}
+                  w={'24px'}
+                  mt={'2px'}
+                  mr={2}
+                  as={ShoppingCartOutlinedIcon}
+                />
+              </HStack>
+            </ModalHeader>
+            <ModalBody
+              as={VStack}
+              gap={null}
+              h={'100%'}
+              overflow={'auto'}
+              className="modalProps"
+              p={0}
+            >
+              <Image
+                w={'280px'}
+                position={'absolute'}
+                top={4}
+                right={0}
+                src="./bgLogoOverlay2.png"
+                zIndex={-1}
+              />
+              <VStack h={'50%'} w={'100%'} color={'white'}>
+                <Image
+                  mt={4}
+                  maxH={'240px'}
+                  flexShrink={1}
+                  src={'./orderBlendedCoffees/' + f?.src}
+                />
+                <Text fontSize={'20px'} fontWeight={800} mt={4}>
+                  {f?.name}
+                </Text>
+                <Text fontSize={'13px'} fontWeight={700}>
+                  {f?.price}
+                </Text>
+                <Text
+                  fontSize={'13px'}
+                  w={'200px'}
+                  textAlign={'center'}
+                  pb={4}
+                  noOfLines={3}
+                >
+                  Lorem ipsum dolor sit amet consectetur. Nisi faucibus
+                  interdum.
+                </Text>
+              </VStack>
+              <Box
+                h={'50%'}
+                w={'100%'}
+                bg={'white'}
+                borderRadius={'16px 16px 0 0'}
+                overflow={'auto'}
+              >
+                <Text p={4} pb={2} fontWeight={700}>
+                  Size
+                </Text>
+
+                <Box w={'1005'} overflow={'auto'} pt={2}>
+                  <HStack w={'max-content'} px={4} gap={4}>
+                    <Box
+                      onClick={() => {
+                        setSelectedSize('Tall');
+                      }}
+                      w={'132px'}
+                      flexShrink={0}
+                      p={'8px 16px'}
+                      className={
+                        selectedSize === 'Tall'
+                          ? 'selectedSize size'
+                          : 'unselectedSize size'
+                      }
+                      borderRadius={'8px'}
+                    >
+                      <HStack justifyContent={'space-between'} mb={2}>
+                        <Text fontWeight={700}>Tall</Text>
+                        <Image
+                          w={'24px'}
+                          src={
+                            selectedSize === 'Tall'
+                              ? './cupWhite.png'
+                              : './cup.png'
+                          }
+                        />
+                      </HStack>
+                      <Text fontSize={'10px'}>354 ml • 398 kcal</Text>
+                    </Box>
+                    <Box
+                      onClick={() => {
+                        setSelectedSize('Grande');
+                      }}
+                      w={'132px'}
+                      p={'8px 16px'}
+                      className={
+                        selectedSize === 'Grande'
+                          ? 'selectedSize size'
+                          : 'unselectedSize size'
+                      }
+                      flexShrink={0}
+                      borderRadius={'8px'}
+                    >
+                      <HStack justifyContent={'space-between'} mb={2}>
+                        <Text fontWeight={700}>Grande</Text>
+                        <Image
+                          w={'24px'}
+                          src={
+                            selectedSize === 'Grande'
+                              ? './cupWhite.png'
+                              : './cup.png'
+                          }
+                        />
+                      </HStack>
+                      <Text fontSize={'10px'}>473 ml • 498 kcal</Text>
+                    </Box>
+                    <Box
+                      onClick={() => {
+                        setSelectedSize('Venti');
+                      }}
+                      w={'132px'}
+                      p={'8px 16px'}
+                      className={
+                        selectedSize === 'Venti'
+                          ? 'selectedSize size'
+                          : 'unselectedSize size'
+                      }
+                      flexShrink={0}
+                      borderRadius={'8px'}
+                    >
+                      <HStack justifyContent={'space-between'} mb={2}>
+                        <Text fontWeight={700}>Venti</Text>
+                        <Image
+                          w={'24px'}
+                          src={
+                            selectedSize === 'Venti'
+                              ? './cupWhite.png'
+                              : './cup.png'
+                          }
+                        />
+                      </HStack>
+                      <Text fontSize={'10px'}>591 ml • 525 kcal</Text>
+                    </Box>
+                  </HStack>
+                </Box>
+
+                <Text p={4} fontWeight={700}>
+                  Customize
+                </Text>
+
+                <Box w={'100%'} px={4} pb={4}>
+                  <HStack justifyContent={'space-between'} mb={2}>
+                    <Text fontSize={'13px'}>Espresso shots</Text>
+                    <HStack>
+                      <IconButton
+                        borderWidth={2}
+                        borderRadius={'100%'}
+                        size={'xs'}
+                        h={'26px'}
+                        variant={'outline'}
+                        colorScheme="primary"
+                        icon={<RemoveRoundedIcon />}
+                      />
+                      <Text>0</Text>
+                      <IconButton
+                        h={'26px'}
+                        borderWidth={2}
+                        borderRadius={'100%'}
+                        size={'xs'}
+                        variant={'outline'}
+                        colorScheme="primary"
+                        icon={<AddRoundedIcon />}
+                      />
+                    </HStack>
+                  </HStack>
+
+                  <HStack justifyContent={'space-between'}>
+                    <Text fontSize={'13px'}>Whole milk</Text>
+                    <HStack>
+                      <IconButton
+                        h={'26px'}
+                        borderWidth={2}
+                        borderRadius={'100%'}
+                        size={'xs'}
+                        variant={'outline'}
+                        colorScheme="primary"
+                        icon={<RemoveRoundedIcon />}
+                      />
+                      <Text>0</Text>
+                      <IconButton
+                        borderRadius={'100%'}
+                        h={'26px'}
+                        borderWidth={2}
+                        size={'xs'}
+                        variant={'outline'}
+                        colorScheme="primary"
+                        icon={<AddRoundedIcon />}
+                      />
+                    </HStack>
+                  </HStack>
+                </Box>
+              </Box>
+            </ModalBody>
+            <ModalFooter
+              className={'modalProps bs'}
+              borderRadius={0}
+              bg={'white'}
+            >
+              <HStack w={'100%'} justifyContent={'space-between'}>
+                <Box>
+                  <Text fontSize={'13px'}>Total</Text>
+                  <Text fontSize={'20px'} fontWeight={700}>
+                    {f?.price}
+                  </Text>
+                </Box>
+                <Button className="btn primaryBtn">Add to Cart</Button>
+              </HStack>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  };
+
   return (
     <VStack id={'appContainer'}>
       <Nav />
@@ -250,18 +788,7 @@ export default function Home() {
         </Box>
 
         <HStack px={4} mb={4}>
-          <Button w={'50%'} className="btn primaryBtn">
-            <Image
-              src="./coffeCup.png"
-              position={'absolute'}
-              w={'40px'}
-              top={'-20px'}
-              left={'20px'}
-            />
-            <Text fontWeight={600} pl={'40px'}>
-              Order
-            </Text>
-          </Button>
+          <Order />
 
           <Location />
         </HStack>

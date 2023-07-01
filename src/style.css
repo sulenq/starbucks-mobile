@@ -16,6 +16,7 @@
   --primary-a: #0361424d;
   --gray: #9ca2a74c;
   --dg: #979494;
+  --a: #026641;
 }
 
 a {
@@ -94,6 +95,10 @@ a {
   box-shadow: 0 0 5px var(--gray);
   border-radius: 8px;
 }
+.bo {
+  border-radius: 8px;
+  border: 1px solid var(--gray);
+}
 
 .nav {
   position: fixed;
@@ -120,4 +125,16 @@ a {
 .visitedNav {
   font-weight: 800 !important;
   color: var(--primary) !important;
+}
+
+.size {
+  transition: 0.1s;
+}
+.unselectedSize {
+  background: #F2F0EA;
+  color: black;
+}
+.selectedSize {
+  background: var(--primary);
+  color: white;
 }
