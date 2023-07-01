@@ -39,6 +39,13 @@ a {
   font-size: 13px !important;
   font-weight: 600 !important;
 }
+.btnKotak {
+  border-radius: 0 !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  padding: 16px !important;
+  text-align: center;
+}
 .primaryBtn {
   background: var(--primary) !important;
   color: white !important;

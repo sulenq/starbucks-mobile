@@ -28,7 +28,7 @@ const Nav = () => {
 
   const Scan = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const cardSize = window.innerWidth - 80;
+    const cardSize = window.innerWidth - 48;
     return (
       <>
         <VStack className="navItem" onClick={onOpen}>
@@ -50,7 +50,7 @@ const Nav = () => {
           onClose={onClose}
         >
           <ModalContent>
-            <ModalHeader className="modalProps" mb={2}>
+            <ModalHeader className="modalProps" px={4} mb={2}>
               <HStack justifyContent={'space-between'}>
                 <Icon
                   onClick={onClose}
@@ -106,7 +106,7 @@ const Nav = () => {
                     color={'primary.500'}
                   >
                     <Icon
-                      mt={'-6px'}
+                      mt={'-4 px'}
                       fontSize={'38px'}
                       as={StarRateRoundedIcon}
                     />
