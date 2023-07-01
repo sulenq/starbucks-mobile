@@ -793,7 +793,12 @@ export default function Home() {
                 </Text>
                 {sk?.map((s, index) => {
                   return (
-                    <HStack fontSize={'13px'} alignItems={'flex-start'} mb={1}>
+                    <HStack
+                      key={index}
+                      fontSize={'13px'}
+                      alignItems={'flex-start'}
+                      mb={1}
+                    >
                       <Text>{index + 1 + '.'}</Text>
                       <Text>{s}</Text>
                     </HStack>
