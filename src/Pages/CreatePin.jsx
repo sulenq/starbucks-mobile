@@ -12,6 +12,7 @@ import {
   Modal,
   ModalContent,
   ModalBody,
+  VStack,
 } from '@chakra-ui/react';
 
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
@@ -137,25 +138,32 @@ export default function CreatePin() {
       <Modal isOpen={isOpen} size={'full'}>
         <ModalContent>
           <ModalBody className="modalProps" p={0}>
-            <Image
-              w={'240px'}
+            <VStack
               position={'absolute'}
-              top={0}
-              right={0}
-              src="./bgLogoOverlay.png"
-            />
+              alignItems={'flex-end'}
+              top={'0'}
+              maxW={'480px'}
+              w={'100%'}
+              zIndex={-1}
+            >
+              <Image w={'280px'} src="./bgLogoOverlay.png" />
+            </VStack>
+
             <Box p={'16px'}>
               <HStack justifyContent={'space-between'} mb={'32px'}>
                 <Icon
+                  cursor={'pointer'}
                   onClick={onClose}
                   w={'20px'}
                   as={ArrowBackIosNewRoundedIcon}
                 />
                 <Image h={4} src={'starbucks.png'} />
               </HStack>
+
               <Text fontSize={'25px'} fontWeight={800} color={'primary'}>
                 Confirm PIN
               </Text>
+
               <HStack w={'100%'} justifyContent={'center'} my={'25px'}>
                 <PinInput type="number" mask>
                   <PinInputField

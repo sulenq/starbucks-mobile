@@ -94,7 +94,7 @@ a {
 
 .bs {
   box-shadow: 0 0 5px var(--gray);
-  border-radius: 8px;
+  border-radius: 8px !important;
 }
 .bo {
   border-radius: 8px;

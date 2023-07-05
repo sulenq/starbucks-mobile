@@ -28,6 +28,7 @@ import {
   MenuItem,
   MenuButton,
   Checkbox,
+  VStack,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 
@@ -60,21 +61,25 @@ export default function LandingPage() {
         >
           <ModalContent>
             <ModalHeader p={'16px'} mb={'24px'} className="modalProps">
-              <Image
-                w={'240px'}
-                position={'absolute'}
-                top={0}
-                right={0}
-                src="./bgLogoOverlay.png"
-              />
               <HStack justifyContent={'space-between'}>
                 <Icon
+                  cursor={'pointer'}
                   onClick={onClose}
                   w={'20px'}
                   as={ArrowBackIosNewRoundedIcon}
                 />
                 <Image h={4} src={'starbucks.png'} />
               </HStack>
+              <VStack
+                position={'absolute'}
+                alignItems={'flex-end'}
+                top={'0'}
+                maxW={'480px'}
+                w={'100%'}
+                zIndex={-1}
+              >
+                <Image w={'280px'} src="./bgLogoOverlay.png" />
+              </VStack>
             </ModalHeader>
             <ModalBody py={0} className="modalProps">
               <Text
@@ -259,22 +264,25 @@ export default function LandingPage() {
         >
           <ModalContent>
             <ModalHeader p={'16px'} mb={'24px'} className="modalProps">
-              <Image
-                w={'240px'}
-                position={'absolute'}
-                top={0}
-                right={0}
-                src="./bgLogoOverlay.png"
-                zIndex={-1}
-              />
               <HStack justifyContent={'space-between'}>
                 <Icon
+                  cursor={'pointer'}
                   onClick={onClose}
                   w={'20px'}
                   as={ArrowBackIosNewRoundedIcon}
                 />
                 <Image h={4} src={'starbucks.png'} />
               </HStack>
+              <VStack
+                position={'absolute'}
+                alignItems={'flex-end'}
+                top={'0'}
+                maxW={'480px'}
+                w={'100%'}
+                zIndex={-1}
+              >
+                <Image w={'280px'} src="./bgLogoOverlay.png" />
+              </VStack>
             </ModalHeader>
             <ModalBody py={0} className="modalProps">
               <Text
