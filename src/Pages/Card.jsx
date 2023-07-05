@@ -25,7 +25,7 @@ import {
 import { Nav } from '../myComponents';
 
 export default function Card() {
-  const cardSize = window.innerWidth - 48;
+  const cardSize = window.innerWidth < 480 ? window.innerWidth - 48 : 420;
   const history = [
     { purpose: 'Top Up', date: '12 Mar 2023', total: 'Rp 100.000' },
     { purpose: 'Purchase', date: '12 Mar 2023', total: 'Rp 100.000' },
@@ -57,7 +57,12 @@ export default function Card() {
 
     return (
       <>
-        <Text onClick={onOpen} fontWeight={700} color={'primary.500'}>
+        <Text
+          cursor={'pointer'}
+          onClick={onOpen}
+          fontWeight={700}
+          color={'primary.500'}
+        >
           Show All
         </Text>
 
@@ -71,6 +76,7 @@ export default function Card() {
             <ModalHeader className="modalProps bs" px={4}>
               <HStack>
                 <Icon
+                  cursor={'pointer'}
                   onClick={onClose}
                   w={'20px'}
                   mt={'2px'}
@@ -161,7 +167,13 @@ export default function Card() {
 
     return (
       <>
-        <Text onClick={onOpen} fontWeight={700} color={'primary.500'} mb={4}>
+        <Text
+          cursor={'pointer'}
+          onClick={onOpen}
+          fontWeight={700}
+          color={'primary.500'}
+          mb={4}
+        >
           Manage
         </Text>
 
@@ -175,6 +187,7 @@ export default function Card() {
             <ModalHeader className="modalProps bs" px={4}>
               <HStack>
                 <Icon
+                  cursor={'pointer'}
                   onClick={onClose}
                   w={'20px'}
                   mt={'2px'}
@@ -256,10 +269,21 @@ export default function Card() {
       </HStack>
 
       <VStack overflow={'auto'} h={'100%'} w={'100%'} pb={4}>
-        <Box w={'100%'} flexShrink={0} overflow={'auto'} pt={4}>
+        <Box
+          w={'100%'}
+          maxW={'480px'}
+          flexShrink={0}
+          overflow={'auto'}
+          pt={4}
+          scrollSnapType={'x mandatory'}
+        >
           <HStack w={'max-content'} gap={5} px={4}>
-            <Image w={cardSize} src="./card.png" />
-            <Image w={cardSize} src="./addCard.png" />
+            <Image scrollSnapAlign={'center'} w={cardSize} src="./card.png" />
+            <Image
+              scrollSnapAlign={'center'}
+              w={cardSize}
+              src="./addCard.png"
+            />
           </HStack>
         </Box>
 

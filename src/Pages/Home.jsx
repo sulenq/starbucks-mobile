@@ -112,6 +112,7 @@ export default function Home() {
             <ModalHeader flexShrink={0} className="modalProps bs" px={4}>
               <HStack>
                 <Icon
+                  cursor={'pointer'}
                   onClick={onClose}
                   w={'20px'}
                   mt={'2px'}
@@ -271,6 +272,7 @@ export default function Home() {
               <HStack justifyContent={'space-between'}>
                 <HStack>
                   <Icon
+                    cursor={'pointer'}
                     onClick={onClose}
                     w={'20px'}
                     mt={'2px'}
@@ -452,6 +454,7 @@ export default function Home() {
     return (
       <>
         <VStack
+          cursor={'pointer'}
           key={props?.index}
           onClick={onOpen}
           className="bs"
@@ -487,6 +490,7 @@ export default function Home() {
             <ModalHeader flexShrink={0} className="modalProps" px={4}>
               <HStack justifyContent={'space-between'} color={'white'}>
                 <Icon
+                  cursor={'pointer'}
                   onClick={onClose}
                   w={'20px'}
                   mt={'2px'}
@@ -511,14 +515,15 @@ export default function Home() {
               className="modalProps"
               p={0}
             >
-              <Image
-                w={'280px'}
+              <VStack
                 position={'absolute'}
+                alignItems={'flex-end'}
                 top={'64px'}
-                right={0}
-                src="./bgLogoOverlay2.png"
-                zIndex={-1}
-              />
+                maxW={'480px'}
+                w={'100%'}
+              >
+                <Image w={'280px'} src="./bgLogoOverlay2.png" zIndex={-1} />
+              </VStack>
               <VStack
                 h={'60%'}
                 w={'100%'}
@@ -743,7 +748,12 @@ export default function Home() {
 
     return (
       <>
-        <Box onClick={onOpen} maxW={'365px'} w={hfSize}>
+        <Box
+          scrollSnapAlign={'center'}
+          onClick={onOpen}
+          maxW={'365px'}
+          w={hfSize}
+        >
           <Image src={'./homeFeatured/' + f} />
         </Box>
 
@@ -757,6 +767,7 @@ export default function Home() {
             <ModalHeader className="modalProps bs">
               <HStack>
                 <Icon
+                  cursor={'pointer'}
                   onClick={onClose}
                   w={'20px'}
                   mt={'2px'}
@@ -768,6 +779,7 @@ export default function Home() {
                 </Text>
               </HStack>
             </ModalHeader>
+
             <ModalBody className="modalProps" p={0} overflow={'auto'}>
               <Box p={4}>
                 <Image src={'./homeFeatured/' + f} />
@@ -865,8 +877,14 @@ export default function Home() {
           </HStack>
         </Box>
 
-        <Box px={4} w={'100%'} overflow={'auto'} mb={6}>
-          <HStack w={'max-content'}>
+        <Box
+          px={4}
+          w={'100%'}
+          overflow={'auto'}
+          scrollSnapType={'x mandatory'}
+          mb={6}
+        >
+          <HStack cursor={'pointer'} w={'max-content'}>
             {homeFeatured?.map((f, index) => {
               return <PromoDetails key={index} f={f} />;
             })}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import {
   VStack,
@@ -16,10 +16,14 @@ import {
   ModalOverlay,
   useDisclosure,
   ModalHeader,
+  ModalFooter,
 } from '@chakra-ui/react';
 
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
 import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRounded';
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
+import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
 
 import { Nav } from '../myComponents';
 
@@ -55,10 +59,18 @@ export default function Reward() {
   const RewardDetails = props => {
     const r = props?.r;
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const modalContent = useRef();
 
     return (
       <>
-        <HStack onClick={onOpen} gap={4} p={4} className="bs" mb={4}>
+        <HStack
+          cursor={'pointer'}
+          onClick={onOpen}
+          gap={4}
+          p={4}
+          className="bs"
+          mb={4}
+        >
           <Image w={'70px'} src={'./rewards/' + r?.src} />
           <Box>
             <Text noOfLines={2} fontWeight={700} mb={1}>
@@ -82,11 +94,13 @@ export default function Reward() {
           size={'full'}
           onClose={onClose}
           motionPreset="slideInRight"
+          initialFocusRef={modalContent}
         >
-          <ModalContent>
+          <ModalContent ref={modalContent}>
             <ModalHeader className="modalProps bs">
               <HStack>
                 <Icon
+                  cursor={'pointer'}
                   onClick={onClose}
                   w={'20px'}
                   mt={'2px'}
@@ -98,13 +112,14 @@ export default function Reward() {
                 </Text>
               </HStack>
             </ModalHeader>
+
             <ModalBody className="modalProps" p={0} overflow={'auto'}>
               <Box p={4}>
                 <Image src={'./rewards/details/' + r?.src} />
               </Box>
 
               <Box px={4}>
-                <Text fontWeight={800}>TUMBLER DAY</Text>
+                <Text fontWeight={800}>{r?.name}</Text>
                 <Text fontSize={'10px'} mb={4}>
                   Expire on 30 January 2024
                 </Text>
@@ -136,6 +151,134 @@ export default function Reward() {
                 })}
               </Box>
             </ModalBody>
+
+            <ModalFooter className="modalProps bs" px={4}>
+              <Scan closePromoDetails={onClose} />
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </>
+    );
+  };
+
+  const Scan = props => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const cardSize = window.innerWidth - 48;
+
+    return (
+      <>
+        <Button onClick={onOpen} className="primaryBtn btn" w={'100%'}>
+          Use
+        </Button>
+
+        <Modal
+          size={'full'}
+          motionPreset="slideInBottom"
+          isOpen={isOpen}
+          onClose={onClose}
+        >
+          <ModalContent>
+            <ModalHeader className="modalProps" px={4} mb={2}>
+              <HStack justifyContent={'space-between'}>
+                <Icon
+                  onClick={onClose}
+                  w={'20px'}
+                  as={ArrowBackIosNewRoundedIcon}
+                />
+                <Image h={4} src={'starbucks.png'} />
+              </HStack>
+            </ModalHeader>
+            <ModalBody className="modalProps" p={0}>
+              <VStack gap={null}>
+                <Box
+                  scrollSnapType={'x mandatory'}
+                  w={'100%'}
+                  overflow={'auto'}
+                  mb={4}
+                >
+                  <HStack w={'max-content'} gap={5} px={4}>
+                    <Image
+                      scrollSnapAlign={'center'}
+                      w={cardSize}
+                      src="./card.png"
+                    />
+                    <Image
+                      scrollSnapAlign={'center'}
+                      w={cardSize}
+                      src="./addCard.png"
+                    />
+                  </HStack>
+                </Box>
+
+                <HStack
+                  px={4}
+                  w={'100%'}
+                  justifyContent={'space-between'}
+                  mb={4}
+                >
+                  <Box>
+                    <Text alignSelf={'flex-start'} fontSize={'10px'}>
+                      Balance
+                    </Text>
+                    <Text
+                      alignSelf={'flex-start'}
+                      fontSize={'20px'}
+                      fontWeight={800}
+                    >
+                      Rp 100.000
+                    </Text>
+                  </Box>
+                  <Button
+                    className="btn primaryBtn"
+                    pl={'8px !important'}
+                    leftIcon={<AddRoundedIcon />}
+                    color={'white !important'}
+                  >
+                    Top Up
+                  </Button>
+                </HStack>
+
+                <Box px={4} w={'100%'}>
+                  <HStack
+                    w={'100%'}
+                    borderRadius={'8px'}
+                    border={'1px solid var(--primary)'}
+                    p={3}
+                    color={'primary.500'}
+                  >
+                    <Icon
+                      mt={'-4 px'}
+                      fontSize={'38px'}
+                      as={StarRateRoundedIcon}
+                    />
+                    <HStack justifyContent={'space-between'} w={'100%'}>
+                      <Box justifySelf={'flex-start !important'}>
+                        <Text fontSize={'13px'} fontWeight={700}>
+                          Use your rewards
+                        </Text>
+                        <Text fontSize={'10px'}>2 reward can be used</Text>
+                      </Box>
+                      <Icon as={KeyboardArrowRightRoundedIcon} />
+                    </HStack>
+                  </HStack>
+                </Box>
+                <VStack w={'100%'} px={4} my={'128px'}>
+                  <Image w={'80%'} src="./barcode.png" />
+                </VStack>
+              </VStack>
+            </ModalBody>
+            <ModalFooter className="modalProps">
+              <Button
+                onClick={() => {
+                  onClose();
+                  props?.closePromoDetails();
+                }}
+                className="btn primaryBtn"
+                w={'100%'}
+              >
+                Done
+              </Button>
+            </ModalFooter>
           </ModalContent>
         </Modal>
       </>
