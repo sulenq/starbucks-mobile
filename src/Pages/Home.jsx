@@ -713,7 +713,7 @@ export default function Home() {
               className={'modalProps bs'}
               p={4}
               zIndex={99}
-              borderRadius={0}
+              borderRadius={'0 !Important'}
               bg={'white'}
             >
               <HStack w={'100%'} justifyContent={'space-between'}>
