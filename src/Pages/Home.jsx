@@ -124,6 +124,7 @@ export default function Home() {
                 </Text>
               </HStack>
             </ModalHeader>
+
             <ModalBody
               as={VStack}
               gap={null}
@@ -146,6 +147,7 @@ export default function Home() {
                 <Button
                   variant={'ghost'}
                   color={'primary.500'}
+                  colorScheme="primary"
                   leftIcon={<MapOutlinedIcon />}
                 >
                   Maps

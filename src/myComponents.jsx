@@ -21,6 +21,7 @@ import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRound
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import KeyboardArrowRightRoundedIcon from '@mui/icons-material/KeyboardArrowRightRounded';
 import StarRateRoundedIcon from '@mui/icons-material/StarRateRounded';
+import { useRef } from 'react';
 
 const Nav = () => {
   const location = useLocation();
@@ -29,6 +30,8 @@ const Nav = () => {
   const Scan = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const cardSize = window.innerWidth - 48;
+    const modalContent = useRef();
+
     return (
       <>
         <VStack className="navItem" onClick={onOpen}>
@@ -48,8 +51,9 @@ const Nav = () => {
           motionPreset="slideInBottom"
           isOpen={isOpen}
           onClose={onClose}
+          initialFocusRef={modalContent}
         >
-          <ModalContent>
+          <ModalContent ref={modalContent}>
             <ModalHeader className="modalProps" px={4} mb={2}>
               <HStack justifyContent={'space-between'}>
                 <Icon
@@ -60,12 +64,26 @@ const Nav = () => {
                 <Image h={4} src={'starbucks.png'} />
               </HStack>
             </ModalHeader>
+
             <ModalBody className="modalProps" p={0}>
               <VStack gap={null}>
-                <Box w={'100%'} overflow={'auto'} mb={4}>
+                <Box
+                  scrollSnapType={'x mandatory'}
+                  w={'100%'}
+                  overflow={'auto'}
+                  mb={4}
+                >
                   <HStack w={'max-content'} gap={5} px={4}>
-                    <Image w={cardSize} src="./card.png" />
-                    <Image w={cardSize} src="./addCard.png" />
+                    <Image
+                      scrollSnapAlign={'center'}
+                      w={cardSize}
+                      src="./card.png"
+                    />
+                    <Image
+                      scrollSnapAlign={'center'}
+                      w={cardSize}
+                      src="./addCard.png"
+                    />
                   </HStack>
                 </Box>
 
