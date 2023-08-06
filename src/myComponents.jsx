@@ -29,7 +29,13 @@ const Nav = () => {
 
   const Scan = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const cardSize = window.innerWidth - 48;
+    const cardSize = () => {
+      if (window.innerWidth > 480) {
+        return '236px';
+      } else {
+        return `${window.innerWidth - 48}px`;
+      }
+    };
     const modalContent = useRef();
 
     return (
@@ -76,12 +82,12 @@ const Nav = () => {
                   <HStack w={'max-content'} gap={5} px={4}>
                     <Image
                       scrollSnapAlign={'center'}
-                      w={cardSize}
+                      h={cardSize}
                       src="./card.png"
                     />
                     <Image
                       scrollSnapAlign={'center'}
-                      w={cardSize}
+                      h={cardSize}
                       src="./addCard.png"
                     />
                   </HStack>

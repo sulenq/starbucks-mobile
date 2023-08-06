@@ -163,7 +163,13 @@ export default function Reward() {
 
   const Scan = props => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const cardSize = window.innerWidth - 48;
+    const cardSize = () => {
+      if (window.innerWidth > 480) {
+        return '236px';
+      } else {
+        return `${window.innerWidth - 48}px`;
+      }
+    };
 
     return (
       <>
@@ -188,6 +194,7 @@ export default function Reward() {
                 <Image h={4} src={'starbucks.png'} />
               </HStack>
             </ModalHeader>
+
             <ModalBody className="modalProps" p={0}>
               <VStack gap={null}>
                 <Box
@@ -196,15 +203,15 @@ export default function Reward() {
                   overflow={'auto'}
                   mb={4}
                 >
-                  <HStack w={'max-content'} gap={5} px={4}>
+                  <HStack w={'max-content'} gap={5} px={4} h={'236px'}>
                     <Image
                       scrollSnapAlign={'center'}
-                      w={cardSize}
+                      h={cardSize}
                       src="./card.png"
                     />
                     <Image
                       scrollSnapAlign={'center'}
-                      w={cardSize}
+                      h={cardSize}
                       src="./addCard.png"
                     />
                   </HStack>
